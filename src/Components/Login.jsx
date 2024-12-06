@@ -1,6 +1,50 @@
 import { FaGoogle } from "react-icons/fa";
 import loginImg from "../assets/Rectangle 69.jpg";
+import { useState } from "react";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+
+
+
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+ 
+  const [emailErr, setEmailErr] = useState("");
+  const [passwordErr, setpasswordErr] = useState("");
+
+  const [showPassword, setShowPassword] = useState("");
+  
+  const handleEmail = (e) => {
+    setEmail(e.target.value)
+      setEmailErr("")
+    
+  }
+  
+
+  const handlePassword = (e) =>{
+    setPassword(e.target.value)
+    setpasswordErr("")
+  }
+
+
+  const handleSubmit = () => {
+    if(!email){
+      setEmailErr("Please give email");
+    } else {
+      if (
+        !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          email
+        )
+      )
+        setEmailErr("Please enter valid email address");
+    }
+    if(!password){
+      setpasswordErr("Please give password");
+    }
+  }
+
+
   return (
     <div className="flex pb-[212px]">
         <div className="w-1/2">
@@ -9,7 +53,8 @@ const Login = () => {
             <p className="flex items-center py-[20px] pl-[30px] border radius-[8.336px] w-[220.904px] mb-[32px]"><FaGoogle className="text-[#15013b] mr-[9.77px]" />Login with Google</p>
             <div className="relative ">
             <input
-              type="text"
+              onChange={handleEmail}
+              type="email"
               id="identifierId"
               name="identifier"
               placeholder="Youraddres@email.com"
@@ -19,10 +64,24 @@ const Login = () => {
             
               
             />
+            <p className=" font-normal text-red-700 font-popp">{emailErr}</p>
             <p className="absolute text-[#323232] top-[17px] left-[10px]">Email Addres</p>
             </div>
             <div className="relative ">
+            {showPassword ? (
+              <FaEyeSlash
+                onClick={() => setShowPassword(!showPassword)}
+                className=" absolute top-[50%] text-xl right-[412px] cursor-pointer"
+              />
+            ) : (
+              <FaEye
+                onClick={() => setShowPassword(!showPassword)}
+                className=" absolute top-[50%] text-xl right-[412px] cursor-pointer"
+              />
+            )}
+
             <input
+              onChange={handlePassword}
               type="Password"
               id="identifierId"
               name="identifier"
@@ -33,10 +92,13 @@ const Login = () => {
             
               
             />
+            
             <p className="absolute text-[#323232] top-[17px] left-[10px]">Password</p>
-           
+            <p className=" font-normal text-red-700 font-popp">
+                {passwordErr}
+              </p>
             </div>
-            <button  className=" cursor-pointer mt-[51px] mb-[35px] w-[368px] bg-[#5F35F5] py-[20px] px-[132px] rounded-[8.707px] text-white text-[12px] font-semibold">Login to Continue</button>
+            <button onClick={handleSubmit}  className=" cursor-pointer mt-[51px] mb-[35px] w-[368px] bg-[#5F35F5] py-[20px] px-[132px] rounded-[8.707px] text-white text-[12px] font-semibold">Login to Continue</button>
             <p className="text-[#03014C] font-sans text-[13px] font-bold">Already  have an account ? <span className="text-[#EA6C00] font-bold text-[13px]">Sign In</span></p>
          </div>
             

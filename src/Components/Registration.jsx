@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import {  sendEmailVerification } from "firebase/auth";
 
 
 
@@ -76,7 +77,9 @@ const Registration = () => {
     // }
     if (email && password && fullName) {
       createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
+        
+      .then(() => {
+        sendEmailVerification(auth.currentUser)
           toast("Registration successfully Done");
           setTimeout(() =>{
             navigate("/Login");
