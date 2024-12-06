@@ -1,35 +1,34 @@
+
 import { FaGoogle } from "react-icons/fa";
 import loginImg from "../assets/Rectangle 69.jpg";
 import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-
-
-
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import { Link } from "react-router-dom";
 const Login = () => {
+  const auth = getAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- 
+
   const [emailErr, setEmailErr] = useState("");
   const [passwordErr, setpasswordErr] = useState("");
 
   const [showPassword, setShowPassword] = useState("");
-  
+
   const handleEmail = (e) => {
-    setEmail(e.target.value)
-      setEmailErr("")
-    
-  }
-  
+    setEmail(e.target.value);
+    setEmailErr("");
+  };
 
-  const handlePassword = (e) =>{
-    setPassword(e.target.value)
-    setpasswordErr("")
-  }
-
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+    setpasswordErr("");
+  };
 
   const handleSubmit = () => {
-    if(!email){
+    if (!email) {
       setEmailErr("Please give email");
     } else {
       if (
@@ -39,19 +38,38 @@ const Login = () => {
       )
         setEmailErr("Please enter valid email address");
     }
-    if(!password){
+    if (!password) {
       setpasswordErr("Please give password");
     }
-  }
+    if (email) {
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          toast.success("Login Suessessfully Done");
+          
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          if(errorCode.includes("auth/invalid-credential") ){
+            toast.error("please give your right email & password")
+          }
 
+        });
+    }
+  };
 
   return (
     <div className="flex pb-[212px]">
-        <div className="w-1/2">
-         <div className="mt-[225px] ml-[190px]">
-            <h2 className="text-[#03014C] font-sans text-[33.344px] font-bold mb-[53px]">Login to your account!</h2>
-            <p className="flex items-center py-[20px] pl-[30px] border radius-[8.336px] w-[220.904px] mb-[32px]"><FaGoogle className="text-[#15013b] mr-[9.77px]" />Login with Google</p>
-            <div className="relative ">
+    <ToastContainer/>
+      <div className="w-1/2">
+        <div className="mt-[225px] ml-[190px]">
+          <h2 className="text-[#03014C] font-sans text-[33.344px] font-bold mb-[53px]">
+            Login to your account!
+          </h2>
+          <p className="flex items-center py-[20px] pl-[30px] border radius-[8.336px] w-[220.904px] mb-[32px]">
+            <FaGoogle className="text-[#15013b] mr-[9.77px]" />
+            Login with Google
+          </p>
+          <div className="relative ">
             <input
               onChange={handleEmail}
               type="email"
@@ -61,13 +79,13 @@ const Login = () => {
               autoComplete="username"
               spellCheck="false"
               className=" mb-[60px] w-[368px] mt-[32px] border-b-[3px] bg-none  py-[26px] pl-[52px]  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-            
-              
             />
             <p className=" font-normal text-red-700 font-popp">{emailErr}</p>
-            <p className="absolute text-[#323232] top-[17px] left-[10px]">Email Addres</p>
-            </div>
-            <div className="relative ">
+            <p className="absolute text-[#323232] top-[17px] left-[10px]">
+              Email Addres
+            </p>
+          </div>
+          <div className="relative ">
             {showPassword ? (
               <FaEyeSlash
                 onClick={() => setShowPassword(!showPassword)}
@@ -82,36 +100,43 @@ const Login = () => {
 
             <input
               onChange={handlePassword}
-              type="Password"
+              type={`${showPassword ? "text" : "password"}`}
               id="identifierId"
               name="identifier"
               placeholder="Enter your password"
               autoComplete="username"
               spellCheck="false"
               className="w-[368px] mt-[32px] border-b-[3px] bg-none  py-[26px] pl-[52px]  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-            
-              
             />
-            
-            <p className="absolute text-[#323232] top-[17px] left-[10px]">Password</p>
-            <p className=" font-normal text-red-700 font-popp">
-                {passwordErr}
-              </p>
-            </div>
-            <button onClick={handleSubmit}  className=" cursor-pointer mt-[51px] mb-[35px] w-[368px] bg-[#5F35F5] py-[20px] px-[132px] rounded-[8.707px] text-white text-[12px] font-semibold">Login to Continue</button>
-            <p className="text-[#03014C] font-sans text-[13px] font-bold">Already  have an account ? <span className="text-[#EA6C00] font-bold text-[13px]">Sign In</span></p>
-         </div>
-            
+
+            <p className="absolute text-[#323232] top-[17px] left-[10px]">
+              Password
+            </p>
+            <p className=" font-normal text-red-700 font-popp">{passwordErr}</p>
+          </div>
+          <button
+            onClick={handleSubmit}
+            className=" cursor-pointer mt-[51px] mb-[35px] w-[368px] bg-[#5F35F5] py-[20px] px-[132px] rounded-[8.707px] text-white text-[12px] font-semibold"
+          >
+            Login to Continue
+          </button>
+          <p className="text-[#03014C] font-sans text-[13px] font-bold">
+            Already have an account ?{" "}
+            <span className="text-[#EA6C00] font-bold text-[13px]">
+             <Link to="/registration">Sign Up</Link>
+            </span>
+          </p>
         </div>
-        <div className="w-1/2">
+      </div>
+      <div className="w-1/2">
         <img
           className=" w-full h-screen object-cover"
           src={loginImg}
           alt="loading......"
         />
-        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

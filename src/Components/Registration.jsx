@@ -3,7 +3,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import {  sendEmailVerification } from "firebase/auth";
@@ -96,8 +96,7 @@ const Registration = () => {
   };
 
   return (
-    <div className="flex">
-       
+    (<div className="flex">
       <div className="w-1/2">
       <ToastContainer/>
         
@@ -207,7 +206,7 @@ const Registration = () => {
             <p className="text-[#03014C] font-sans text-[13px] font-bold ml-[75px]">
               Already have an account ?{" "}
               <span className="text-[#EA6C00] font-bold text-[13px]">
-                Sign In
+              <Link to="/login">Sign In</Link>
               </span>
             </p>
           </div>
@@ -220,7 +219,7 @@ const Registration = () => {
           alt="loading......"
         />
       </div>
-    </div>
+    </div>)
   );
 };
 
