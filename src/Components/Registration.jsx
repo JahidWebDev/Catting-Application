@@ -100,7 +100,7 @@ const Registration = () => {
       <div className="w-1/2">
       <ToastContainer/>
         
-        <div className="mt-[225px] ml-[190px]">
+        <div className="mt-[141px] ml-[190px]">
           <h3 className="font-nuni text-[34px] font-bold text-[#11175D]">
             Get started with easily register
           </h3>
@@ -202,6 +202,7 @@ const Registration = () => {
               >
                 Sign up
               </button>
+             
             </div>
             <p className="text-[#03014C] font-sans text-[13px] font-bold ml-[75px]">
               Already have an account ?{" "}

@@ -58,7 +58,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex pb-[212px]">
+    <div className="flex">
     <ToastContainer/>
       <div className="w-1/2">
         <div className="mt-[225px] ml-[190px]">
@@ -89,12 +89,12 @@ const Login = () => {
             {showPassword ? (
               <FaEyeSlash
                 onClick={() => setShowPassword(!showPassword)}
-                className=" absolute top-[50%] text-xl right-[412px] cursor-pointer"
+                className=" absolute top-[50%] text-xl right-[513px] cursor-pointer"
               />
             ) : (
               <FaEye
                 onClick={() => setShowPassword(!showPassword)}
-                className=" absolute top-[50%] text-xl right-[412px] cursor-pointer"
+                className=" absolute top-[50%] text-xl right-[513px] cursor-pointer"
               />
             )}
 
@@ -120,6 +120,9 @@ const Login = () => {
           >
             Login to Continue
           </button>
+          <p className="mt-1 p-1 bg-orange-500 text-center w-[368px] text-white rounded">
+               <Link to="/forgotpassword">Forgot password</Link>
+          </p>
           <p className="text-[#03014C] font-sans text-[13px] font-bold">
             Already have an account ?{" "}
             <span className="text-[#EA6C00] font-bold text-[13px]">
