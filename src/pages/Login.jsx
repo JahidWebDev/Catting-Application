@@ -6,9 +6,10 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const auth = getAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -45,7 +46,9 @@ const Login = () => {
       signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           toast.success("Login Suessessfully Done");
-          
+          setTimeout(() =>{
+            navigate("/home")
+          },2000)
         })
         .catch((error) => {
           const errorCode = error.code;
