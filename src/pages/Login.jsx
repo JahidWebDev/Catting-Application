@@ -7,8 +7,12 @@ import { FaEyeSlash } from "react-icons/fa";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { userLoginInfo } from "../userSlice";
 const Login = () => {
   const auth = getAuth();
+
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,7 +48,11 @@ const Login = () => {
     }
     if (email) {
       signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
+        .then((user) => {
+          console.log(user);
+          
+          dispatch(userLoginInfo(user.user));
+          localStorage.setItem("userLoginInfo", JSON.stringify(user.user))
           toast.success("Login Suessessfully Done");
           setTimeout(() =>{
             navigate("/home")
