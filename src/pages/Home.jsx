@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Sidebar from "./Sidebar/Sidebar";
+
 
 const Home = () => {
   const auth = getAuth();
@@ -26,10 +28,16 @@ const Home = () => {
     <div className="flex p-5">
        {verify ? (
         <>
-         <div>cxxvcxcxc</div>
-         <div>cxxvcxcxc</div>
-         <div>cxxvcxcxc</div>
-         <div>cxxvcxcxc</div>
+         <div className="flex">
+         <div className="w-[230px]">
+          <div>
+          <Sidebar/>
+          </div>
+         </div>
+         <div className="w-[427px]"></div>
+         <div className="w-[346px]"></div>
+         </div>
+         
        </>
        ) : (
         <p>please verify your email</p>

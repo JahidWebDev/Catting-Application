@@ -80,7 +80,7 @@ const Login = () => {
             <FaGoogle className="text-[#15013b] mr-[9.77px]" />
             Login with Google
           </p>
-          <div className="relative ">
+          <div className="relative">
             <input
               onChange={handleEmail}
               type="email"
@@ -96,16 +96,16 @@ const Login = () => {
               Email Addres
             </p>
           </div>
-          <div className="relative ">
+          <div className="relative w-[368px]">
             {showPassword ? (
               <FaEyeSlash
                 onClick={() => setShowPassword(!showPassword)}
-                className=" absolute top-[50%] text-xl right-[513px] cursor-pointer"
+                className=" absolute right-[20px] top-[50%] text-xl  cursor-pointer"
               />
             ) : (
               <FaEye
                 onClick={() => setShowPassword(!showPassword)}
-                className=" absolute top-[50%] text-xl right-[513px] cursor-pointer"
+                className=" absolute right-[20px] top-[50%]  text-xl  cursor-pointer"
               />
             )}
 

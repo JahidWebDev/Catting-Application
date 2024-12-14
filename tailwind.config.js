@@ -10,6 +10,9 @@ export default {
         'popp': [ "Poppins", "sans-serif"],
         'nuni': [ "Nunito", "sans-serif"],
         'sans': [ "Open Sans", "sans-serif"]
+      },
+      colors: {
+        'myhomecolor': '#5F35F5'
       }
     },
   }, 
