@@ -12,7 +12,8 @@ export default {
         'sans': [ "Open Sans", "sans-serif"]
       },
       colors: {
-        'myhomecolor': '#5F35F5'
+        'myhomecolor': '#5F35F5',
+        'myiconcolor': '#BAD1FF'
       }
     },
   }, 
