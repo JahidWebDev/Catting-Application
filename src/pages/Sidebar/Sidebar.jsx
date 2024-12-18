@@ -10,6 +10,9 @@ const Sidebar = () => {
       <aside className="w-[186px] bg-myhomecolor rounded-[20px] pb-[48px]">
          <div className="pt-[38px] pl-[43px] pr-[43px]">
            <img src={ProfileImg} alt="loading......." />
+           <div className="w-[100px] h-[100px] hover:bg-black group-hover:opacity-[0.8] absolute top-0 left-0 rounded-full">
+
+           </div>
          </div>
          <div className=" relative py-[22px] px-[50px] h-[89px] bg-white ml-[25px] mr-[8px] rounded-l-[20px] mt-[78px]">
           <SlHome className="text-myhomecolor  text-[40px] font-bold"/> 

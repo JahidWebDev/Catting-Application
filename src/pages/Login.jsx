@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { ToastContainer, toast } from 'react-toastify';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLoginInfo } from "../userSlice";
@@ -70,9 +70,21 @@ const Login = () => {
 
   return (
     <div className="flex">
-    <ToastContainer/>
+      <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
+        />
       <div className="w-1/2">
-        <div className="mt-[225px] ml-[190px]">
+        <div className="mt-[150px] ml-[190px]">
           <h2 className="text-[#03014C] font-sans text-[33.344px] font-bold mb-[53px]">
             Login to your account!
           </h2>

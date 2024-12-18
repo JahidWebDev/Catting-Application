@@ -5,10 +5,8 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import {  sendEmailVerification } from "firebase/auth";
-
-
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import { sendEmailVerification } from "firebase/auth";
 
 const Registration = () => {
   const auth = getAuth();
@@ -77,14 +75,12 @@ const Registration = () => {
     // }
     if (email && password && fullName) {
       createUserWithEmailAndPassword(auth, email, password)
-        
-      .then(() => {
-        sendEmailVerification(auth.currentUser)
-          toast("Registration successfully Done");
-          setTimeout(() =>{
+        .then(() => {
+          sendEmailVerification(auth.currentUser);
+          toast.success("Registration successfully Done");
+          setTimeout(() => {
             navigate("/Login");
-          },3000)
-          
+          }, 3000);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -96,10 +92,22 @@ const Registration = () => {
   };
 
   return (
-    (<div className="flex">
+    <div className="flex">
       <div className="w-1/2">
-      <ToastContainer/>
-        
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
+        />
+
         <div className="mt-[141px] ml-[190px]">
           <h3 className="font-nuni text-[34px] font-bold text-[#11175D]">
             Get started with easily register
@@ -202,12 +210,11 @@ const Registration = () => {
               >
                 Sign up
               </button>
-             
             </div>
             <p className="text-[#03014C] font-sans text-[13px] font-bold ml-[75px]">
               Already have an account ?{" "}
               <span className="text-[#EA6C00] font-bold text-[13px]">
-              <Link to="/login">Sign In</Link>
+                <Link to="/login">Sign In</Link>
               </span>
             </p>
           </div>
@@ -220,7 +227,7 @@ const Registration = () => {
           alt="loading......"
         />
       </div>
-    </div>)
+    </div>
   );
 };
 
