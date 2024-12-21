@@ -1,0 +1,18 @@
+.btn{
+    background-color: #14141E;
+    width: fit-content;
+    color: #fff;
+    bottom: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover{
+    opacity: 0.8;
+}
+
+.btn-primary{
+  background-color: #14141E;
+}

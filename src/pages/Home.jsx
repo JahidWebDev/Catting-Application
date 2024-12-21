@@ -11,7 +11,7 @@ const Home = () => {
   const data = useSelector((state) => state.userDetails.userInfo);
    console.log(data);
    const navigate = useNavigate();
-   const [verify, setVerify] =useState(false)
+   const [verify, setVerify] = useState(false)
    useEffect(() =>{
     if (!data) {
       navigate("/login")    

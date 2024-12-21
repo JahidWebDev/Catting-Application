@@ -6,6 +6,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { ImExit } from "react-icons/im";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useState } from "react";
+import Button from "../Button";
 
 const Sidebar = () => {
   const [show, showSet] = useState(false);
@@ -39,10 +40,10 @@ const Sidebar = () => {
         <div className="text-myiconcolor text-[40px] font-bold ml-[72px] pt-[57px] pb-[89px]">
           <BsChatDotsFill />
         </div>
-        <div className="text-myiconcolor text-[48px] font-bold ml-[68px] pb-[89px]">
+        <div className="text-myiconcolor text-[49px] font-bold ml-[68px] pb-[89px]">
           <IoMdNotificationsOutline />
         </div>
-        <div className="text-myiconcolor text-[45px] font-bold ml-[68px] pb-[89px]">
+        <div className="text-myiconcolor text-[44px] font-bold ml-[68px] pb-[89px]">
           <IoSettingsOutline />
         </div>
         <div className="text-myiconcolor text-[45px] font-bold ml-[68px] mt-[59px] pb-[0px]">
@@ -50,7 +51,16 @@ const Sidebar = () => {
         </div>
       </aside>
 
-      {show && <div className="w-full h-full bg-[#D3DAEA] opacity-[0.5] absolute top-0 left-0 z-[99999] p-[400px]"></div>}
+      {show && <div className="w-full h-full bg-[#D3DAEA] bg-opacity-60 backdrop-blur-md absolute top-0 left-0 z-[99999] p-[400px]">
+        <div className=" flex justify-center items-center">
+          <div className=" bg-myhomecolor w-[600px] py-5 rounded z-[999999]">
+            <div className=" font-popp text-3xl font-semibold text-center text-white">
+              <h3>Images Upload</h3>
+            </div>
+            <Button/>
+          </div>
+        </div>
+      </div>}
     </section>
   );
 };
