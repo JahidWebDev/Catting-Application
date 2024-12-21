@@ -7,6 +7,7 @@ import { ImExit } from "react-icons/im";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { useState } from "react";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [show, showSet] = useState(false);
@@ -29,7 +30,7 @@ const Sidebar = () => {
             {/* Upload Icon */}
             <IoCloudUploadOutline
               onClick={handClick}
-              className="text-3xl text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="text-3xl text-miconcolor  opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             />
           </div>
         </div>
@@ -53,11 +54,21 @@ const Sidebar = () => {
 
       {show && <div className="w-full h-full bg-[#D3DAEA] bg-opacity-60 backdrop-blur-md absolute top-0 left-0 z-[99999] p-[400px]">
         <div className=" flex justify-center items-center">
-          <div className=" bg-myhomecolor w-[600px] py-5 rounded z-[999999]">
+          <div className=" bg-myhomecolor w-[600px] py-5 px-5 rounded z-[999999]">
             <div className=" font-popp text-3xl font-semibold text-center text-white">
               <h3>Images Upload</h3>
+              <div className=" font-sans text-[16px] font-light text-white text-start py-[20px]">
+                <input type="file" />
+              </div>
             </div>
-            <Button/>
+            <div className="flex">
+            <Button>
+             Upload
+            </Button>
+            <Button>
+            <Link to="/login">Back to Home</Link>
+            </Button>
+            </div>
           </div>
         </div>
       </div>}
