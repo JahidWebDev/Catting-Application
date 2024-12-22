@@ -12,10 +12,10 @@ import "cropperjs/dist/cropper.css";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
-  const [setProfileImgUpdate] = useState();
+
   const [image, setImage] = useState(null);
   // const [ setcencel] = useState(false);
-  const [cropData, setCropData] = useState("");
+  const [cropData, setCroppedImage] = useState("");
   const cropperRef = createRef();
 
   // Handle showing the image upload modal
@@ -34,17 +34,9 @@ const Sidebar = () => {
 
   // Handle cropping action
   const handleCrop = () => {
-    if (cropperRef.current?.cropper) {
-      setCropData(cropperRef.current.cropper.getCroppedCanvas().toDataURL());
+    if (typeof cropData !== "undefined") {
+      setCroppedImage(cropData.getCroppedCanvas().toDataURL());
     }
-  };
-
-  // Close the upload modal and reset state
-  const closeUploadModal = () => {
-    setProfileImgUpdate(false);
-      console.log("HELLO");
-       
-        
   };
 
   return (
@@ -53,7 +45,7 @@ const Sidebar = () => {
         {/* Profile Picture with Upload Option */}
         <div className="group relative w-[100px] h-[100px] mx-auto cursor-pointer border-[7px] border-[#1053fc] rounded-full">
           <img
-            src={cropData || ProfileImg}
+            src={ ProfileImg}
             alt="Profile"
             className="rounded-full drop-shadow-2xl"
           />
@@ -100,7 +92,9 @@ const Sidebar = () => {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="img-preview w-[100px] h-[100px] bg-gray-300" />
+                <div className="img-preview w-[100px] h-[100px]">
+                  <img src={ProfileImg} alt="" />
+                </div>
               )}
             </div>
 
@@ -118,7 +112,7 @@ const Sidebar = () => {
                 responsive={true}
                 autoCropArea={1}
                 checkOrientation={false}
-                guides={true}
+                guides={false}
               />
             )}
 
@@ -129,12 +123,14 @@ const Sidebar = () => {
             />
 
             <div className="flex justify-between mt-6">
-              <Button onClick={handleCrop} className="bg-blue-500">
+              <Button
+                onClick={handleCrop}
+                className=" px-3 rounded-lg hover:bg-[#3468f7] transition-all duration-500"
+              >
                 Crop
               </Button>
-              <Button onClick={closeUploadModal} className="bg-red-500">
-                Cancel
-              </Button>
+
+              <Button className="bg-red-500">Cancel</Button>
               <Button>
                 <Link to="/login">Back to Home</Link>
               </Button>
