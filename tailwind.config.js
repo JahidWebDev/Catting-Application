@@ -15,7 +15,7 @@ export default {
         'myhomecolor': '#14141E',
         'myiconcolor': '#1053FC',
         'miconcolor': '#1053FC',
-        'bodyColor': '#EEEEEE'
+        'bodyColor': '#fff8e1'
       },
       dropShadow: {
            '4xl': [

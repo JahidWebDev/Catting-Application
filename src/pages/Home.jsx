@@ -5,6 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Sidebar from "./Sidebar/Sidebar";
 import GroupsList from "./GroupsList";
+import Friend from "./Friend";
+import Friends from "./Friends";
+import MyGroup from "./MyGroup";
+import UserList from "./UserList";
+import Blocked from "./Blocked";
 
 
 const Home = () => {
@@ -35,10 +40,18 @@ const Home = () => {
           <Sidebar/>
           </div>
          </div>
-         <div className="w-[427px]">
+         <div className="w-[600px]">
           <GroupsList/>
+          <Friend/>
          </div>
-         <div className="w-[346px]"></div>
+         <div className="w-[500px]">
+          <Friends/>
+          <MyGroup/>
+         </div>
+         <div className="w-[346px]">
+          <UserList/>
+          <Blocked/>
+         </div>
          </div>
          
        </>
