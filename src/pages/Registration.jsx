@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import React from 'react';
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import { sendEmailVerification } from "firebase/auth";
+import { Input } from "@material-tailwind/react";
 
 const Registration = () => {
   const auth = getAuth();
@@ -121,23 +122,23 @@ const Registration = () => {
             </p>
           )} */}
 
-          <div className="relative">
+          <div className=" relative">
             {/* Input Field */}
-            <input
+            <Input
               onChange={handleEmail}
               value={email}
               type="email"
               id="identifierId"
               name="identifier"
-              placeholder=" "
+              placeholder="webdeveloper2324@gmail.com"
               autoComplete="username"
               spellCheck="false"
-              className="w-[368px] border bg-none border-gray-300 rounded-[8px] py-[26px] pl-[52px]  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              className="border bg-[#EEEEEE] border-gray-300 rounded-[8px] py-[26px] pl-[52px]  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             />
             {/* Floating Label */}
             <label
               htmlFor="identifierId"
-              className="absolute bg-white left-[36px] top-[-12px] text-gray-500 text-sm transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-blue-500 px-[18px]"
+              className="absolute bg-[#EEEEEE] left-[36px] top-[-12px] text-gray-500 text-sm transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-blue-500 px-[18px]"
             >
               Email Address
             </label>

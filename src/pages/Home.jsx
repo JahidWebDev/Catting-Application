@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Sidebar from "./Sidebar/Sidebar";
+import GroupsList from "./GroupsList";
 
 
 const Home = () => {
@@ -34,7 +35,9 @@ const Home = () => {
           <Sidebar/>
           </div>
          </div>
-         <div className="w-[427px]"></div>
+         <div className="w-[427px]">
+          <GroupsList/>
+         </div>
          <div className="w-[346px]"></div>
          </div>
          
